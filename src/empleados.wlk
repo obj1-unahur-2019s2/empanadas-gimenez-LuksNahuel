@@ -5,15 +5,22 @@ object galvan {
 	var sueldo = 15000
 	var dinero = 0
 	var deuda = 0
-	method totalDeuda(){return deuda}
-	method totalDinero() {return dinero}
-	method sueldo() { return sueldo }
-	method sueldo(nuevoValor) { sueldo = nuevoValor }
+	method totalDeuda(){
+		return deuda
+	}
+	method totalDinero() {
+		return dinero
+	}
+	method sueldo() { 
+		return sueldo
+	}
+	method sueldo(nuevoValor) { 
+		sueldo = nuevoValor
+	}
 	method cobrarSueldo() {
-		//dinero += sueldo
 		var calculo = deuda - sueldo
 		if(calculo < 0) {
-			dinero += calculo * -1
+			dinero += calculo.abs()
 			deuda = 0
 		} else {
 			deuda = calculo
@@ -41,11 +48,21 @@ object galvan {
 		var calculo = dinero - cuanto
 		if(calculo < 0){
 			dinero = 0
-			deuda += calculo * -1
+			deuda += calculo.abs()
 		} else {
 			dinero -= cuanto
 		}
 	}	
+	method gastar_Mejor(cuanto) {
+		deuda += cuanto
+		if(deuda >= dinero) {
+			deuda -= dinero
+			dinero = 0
+		} else {
+			dinero -= deuda
+			deuda = 0
+		}
+	}
 }
 
 object baigorria {
